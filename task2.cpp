@@ -4,7 +4,6 @@
 
 using namespace std;
 
-// Структура для реализации упорядоченного множества
 struct Set {
     int* data;        // Указатель на массив элементов множества
     size_t size;      // Текущий размер множества (количество элементов)
@@ -96,7 +95,7 @@ struct Set {
 int main() {
 
     Set set;  // Создаем экземпляр множества
-    cout << "\nКоманды для множества (SETADD, SETDELL, SET_AT, PRINT, EXIT): " << endl;
+    cout << "\nКоманды для множества (SETADD, SETDEL, SET_AT, PRINT, EXIT): " << endl;
     string setCommand;
     while (true) {
         getline(cin, setCommand);
@@ -108,7 +107,7 @@ int main() {
             cin.ignore(); // Игнорируем остаток строки
             set.SETADD(element); // Вызываем метод добавления
         }
-        else if (setCommand == "SETDELL") {
+        else if (setCommand == "SETDEL") {
             int element;
             cout << "Введите элемент для удаления: ";
             cin >> element;
