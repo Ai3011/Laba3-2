@@ -25,8 +25,7 @@ bool canCompleteTasks(LinkedList& tasks, LinkedList& zav) {
         current = current->next; // Переходим к следующей зависимости
     }
 
-    // Инициализируем стек
-    Stack stack;
+    Stack stack;// стек для задач
 
     // Добавляем задачи без зависимостей в стек
     Node* taskNode = tasks.head; // Проходим по задачам
@@ -67,20 +66,20 @@ bool canCompleteTasks(LinkedList& tasks, LinkedList& zav) {
 
 int main() {
     setlocale(LC_ALL, "ru");
-    LinkedList tasks;
-    LinkedList zav;
+    LinkedList tasks; // задачи
+    LinkedList zav; // зависимости
 
     // Ввод задач
     cout << "Введите задачи (например, A, B, C): ";
-    string tasksInput;
+    string tasksInput; //вводимые задачи
     getline(cin, tasksInput);
 
     // Обработка ввода задач
-    size_t pos = 0;
-    while ((pos = tasksInput.find(',')) != string::npos) {
-        string task = tasksInput.substr(0, pos);
+    size_t pos = 0; // позиция запятой
+    while ((pos = tasksInput.find(',')) != string::npos) { //пока в строке есть запятые
+        string task = tasksInput.substr(0, pos); // извлекаемая задача (подстрока основного ввода)
         tasks.addTail(task.erase(0, task.find_first_not_of(" "))); // Добавляем в список без пробелов
-        tasksInput.erase(0, pos + 1);
+        tasksInput.erase(0, pos + 1); //удаляем обработанную часть строки вместе с запятой
     }
     tasks.addTail(tasksInput.erase(0, tasksInput.find_first_not_of(" "))); // Добавляем последний элемент
 
@@ -100,10 +99,10 @@ int main() {
 
     // Проверка возможности завершения задач
     if (canCompleteTasks(tasks, zav)) {
-        cout << "Возможно завершить все задачи." << endl; // Можно завершить все задачи
+        cout << "Возможно" << endl; // Можно завершить все задачи
     }
     else {
-        cout << "Невозможно завершить все задачи." << endl; // Нельзя завершить все задачи
+        cout << "Невозможно" << endl; // Нельзя завершить все задачи
     }
 
     return 0;
