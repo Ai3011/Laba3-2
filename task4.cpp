@@ -94,7 +94,8 @@ int main() {
 
         // Проверяем слово по словарю
         for (size_t j = 0; j < dictionary.length(); ++j) {
-            if (compareWithAccent(word, dictionary.get(j))) {
+            int count = countAccents(word);
+            if (compareWithAccent(word, dictionary.get(j))  && count == 1) {
                 foundCorrectAccent = true;  // Найдено слово с правильным ударением
                 break;
             }
@@ -106,9 +107,6 @@ int main() {
             // Ошибка, если слово не найдено в словаре или количество ударений не равно 1
             if (accentCount != 1) {
                 errors++;  // Ошибка, если ударений нет или их больше одного
-            }
-            else {
-                errors++;  // Ошибка, так как слова нет в словаре
             }
         }
     }
